@@ -45,7 +45,7 @@ def check_price(df_row):
     print("You want for {wanted_price} roubles".format(
         wanted_price=wanted_price))
 
-    if(price < wanted_price):
+    if(price <= wanted_price):
         send_mail()
 
 
