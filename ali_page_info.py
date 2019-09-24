@@ -36,15 +36,30 @@ class AliPage:
         return False
 
     def get_soup(self):
+        error = self.validation()
+        if error:
+            return 
+
         page = requests.get(self.URL)
         self.soup = BeautifulSoup(page.content, 'html.parser')
         self.soup = BeautifulSoup(self.soup.prettify(), 'html.parser')
 
     def get_title(self):
+        error = self.validation()
+        if error:
+            self.title = None
+            return self.title
+            
         self.title = self.soup.find("title").get_text().strip()
         return self.title
 
     def get_price(self):
+        error = self.validation()
+        if error:
+            self.price = None
+            self.sale = None
+            return
+
         # Price is hidden in <script>
         scripts_list = self.soup.find_all('script')
         # To search the price concatinate all <scripts> into one string
@@ -90,6 +105,11 @@ class AliPage:
                 return self.price, False
 
     def print_product(self):
+        error = self.validation()
+        if error:
+            print("\n\nNot correct URL")
+            return
+
         print("\n\nProduct name: {title}".format(title=self.title))
 
         if self.sale:
