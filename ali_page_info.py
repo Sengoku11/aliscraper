@@ -17,7 +17,6 @@ class AliPage:
             self.get_soup()
             self.title = self.get_title()
             self.price, self.sale = self.get_price()
-            self.print_product()
 
     def __str__(self):
         return str(self.title)
@@ -117,16 +116,10 @@ class AliPage:
         else:
             print("Price: {price} roubles.".format(price=self.price))
 
-        self.wanted_price = 200
-        print("You want for {wanted_price} roubles.".format(
-            wanted_price=self.wanted_price))
 
-        if(self.price > self.wanted_price):
-            print('match!\n\n')
+if __name__ == '__main__':
+    test_obj = AliPage('https://www.aliexpress.com/item/32231073816.html?spm=a2g01.12602323.fdpcl001.1.3446753f4nXa4c&gps-id=5589723&scm=1007.23880.125255.0&scm_id=1007.23880.125255.0&scm-url=1007.23880.125255.0&pvid=7453c2f')
+    test_obj.print_product()
 
-
-# test_obj = AliPage('https://www.aliexpress.com/item/32231073816.html?spm=a2g01.12602323.fdpcl001.1.3446753f4nXa4c&gps-id=5589723&scm=1007.23880.125255.0&scm_id=1007.23880.125255.0&scm-url=1007.23880.125255.0&pvid=7453c2f')
-# print(test_obj)
-
-# test_obj = AliPage('https://m.ru.aliexpress.com/item/32682406509.html?trace=wwwdetail2mobilesitedetail&scm=1007.23534.123999.0&pvid=352e7150-ed71-4654-9adc-bc12982a1af1&rmsg=do_not_replacement&dp=13d5ddafb1ec2a960c6ac888f8a87eba&af=496392&cv=47843&afref=&mall_affr=pr3&aff_platform=aaf&cpt=1569181332466&sk=VnYZvQVf&aff_trace_key=145a7c50a025486a891ab33265a1e978-1569181332466-05972-VnYZvQVf&terminal_id=9b0b835d653e4f43bab42b6100a23477')
-# print(test_obj)
+    second_test_obj = AliPage('https://m.ru.aliexpress.com/item/32682406509.html?trace=wwwdetail2mobilesitedetail&scm=1007.23534.123999.0&pvid=352e7150-ed71-4654-9adc-bc12982a1af1&rmsg=do_not_replacement&dp=13d5ddafb1ec2a960c6ac888f8a87eba&af=496392&cv=47843&afref=&mall_affr=pr3&aff_platform=aaf&cpt=1569181332466&sk=VnYZvQVf&aff_trace_key=145a7c50a025486a891ab33265a1e978-1569181332466-05972-VnYZvQVf&terminal_id=9b0b835d653e4f43bab42b6100a23477')
+    second_test_obj.print_product()    
